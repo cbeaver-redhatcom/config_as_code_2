@@ -1,0 +1,14 @@
+---
+- name: print collections path
+  hosts: localhost
+  connection: local 
+  gather_facts: false 
+  tasks:
+
+    - name: grab collections
+      ansible.builtin.command:
+        cmd: ansible-galaxy collection list
+      register: _collections
+
+    - debug:
+        var: _collections

@@ -3,7 +3,7 @@
   hosts: localhost
   connection: local
   vars:
-    collections_path: /home/ansible/.ansible/collections/ansible_collections
+    collections_path: /usr/share/ansible/collections/ansible_collections
     aap_validate_certs: "{{ aap_validate_certs }}"
     aap_hostname: aap25.beaverdam.com
   tasks:
