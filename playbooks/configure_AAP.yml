@@ -1,0 +1,19 @@
+---
+- name: Playbook to configure ansible controller post installation
+  hosts: localhost
+  connection: local
+  vars:
+    collections_path: /home/ansible/.ansible/collections/ansible_collections
+    aap_validate_certs: "{{ aap_validate_certs }}"
+    aap_hostname: aap25.beaverdam.com
+  tasks:
+    - name: Include vars from configs directory
+      ansible.builtin.include_vars:
+        dir: vars/
+        extensions: [yml]
+      tags:
+        - always
+
+    - name: Call dispatch role
+      ansible.builtin.include_role:
+        name: infra.aap_configuration.dispatch
